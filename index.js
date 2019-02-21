@@ -8,11 +8,13 @@ var app=express();
 const authentication=require('./routes/authenticate')(router);
 const bodyParser=require('body-parser');
 
-mongoose.connect('mongodb://localhost/test',(err)=>{
+mongoose.connect('mongodb://localhost:27017/test',(err)=>{
     if(err){
-        console.log('Error in connecting Data base',+ err)
+        console.log('Error in connecting Data base', err)
+    }else{
+        console.log('Database created & connected')
     }
-    console.log('Database created & connected')
+    
 })
 
 
@@ -24,6 +26,7 @@ app.use('/authentication', authentication);
 
 app.get('/',(req,res)=>{
     res.send('All set')
+
 });
 
 
